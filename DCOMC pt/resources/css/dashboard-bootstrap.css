@@ -1,0 +1,128 @@
+/* Dashboard layout: sidebar + main (works with Bootstrap, fully offline) */
+.dashboard-wrap,
+body.dashboard-wrap {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bs-body-bg, #f8f9fa);
+}
+/* When sidebar is used with Tailwind body (flex h-screen), layout still works */
+body:has(.dashboard-sidebar) {
+  min-height: 100vh;
+}
+/* Registrar / UniFAST / Admin layout: flex items-start, gap between sidebar and main */
+.dashboard-wrap:has(.registrar-sidebar-card),
+.dashboard-wrap:has(.unifast-sidebar-card),
+.dashboard-wrap:has(.admin-sidebar-card) {
+  align-items: stretch;
+  gap: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.dashboard-sidebar {
+  width: 16rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+/* Registrar sidebar: fixed width and height when inside dashboard-wrap */
+.dashboard-wrap:has(.registrar-sidebar-card) .dashboard-sidebar {
+  width: 18rem;
+  height: 100vh;
+}
+/* UniFAST sidebar: same pinned dimensions as Registrar */
+.dashboard-wrap:has(.unifast-sidebar-card) .dashboard-sidebar {
+  width: 18rem;
+  height: 100vh;
+}
+/* Admin sidebar: same pinned dimensions as Registrar (1:1 visual match) */
+.dashboard-wrap:has(.admin-sidebar-card) .dashboard-sidebar {
+  width: 18rem;
+  height: 100vh;
+}
+.dashboard-main,
+main.dashboard-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+/* Sidebar nav links (Bootstrap-friendly) */
+.dashboard-sidebar .nav-link {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+.dashboard-sidebar .nav-link:hover {
+  opacity: 0.9;
+}
+.dashboard-sidebar details {
+  margin-bottom: 0.25rem;
+}
+.dashboard-sidebar details summary {
+  cursor: pointer;
+  list-style: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}
+.dashboard-sidebar details summary::-webkit-details-marker {
+  display: none;
+}
+/* Content cards spacing */
+.dashboard-main .card {
+  border: 1px solid rgba(0,0,0,.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+/* Form consistency */
+.dashboard-main .form-control:focus,
+.dashboard-main .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+/* Table responsive */
+.dashboard-main .table-responsive {
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+/* Ensure Bootstrap components win over Tailwind base (load order fallback) */
+body .btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+}
+body .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.375rem;
+}
+body .card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+body .form-control,
+body .form-select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+}

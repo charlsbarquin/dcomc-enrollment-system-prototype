@@ -1,0 +1,10 @@
+/* Bootstrap base: from here for offline (npm run dev or built assets); CDN in layout for when online */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'dashboard-bootstrap.css';
+
+/* DCOMC branding: form focus uses primary blue #1E40AF */
+.form-control:focus,
+.form-select:focus {
+  border-color: #1E40AF;
+  box-shadow: 0 0 0 0.2rem rgba(30, 64, 175, 0.25);
+}

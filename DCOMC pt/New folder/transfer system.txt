@@ -1,0 +1,12 @@
+transfer system
+download:
+MariaDB 12.2.2 or 12.1
+composer: php dependency manager
+node.js 22.19.0
+
+php 8.5.1
+
+
+mariadb --version
+sc query MariaDB
+net start MariaDB
